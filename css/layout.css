@@ -1,0 +1,27 @@
+.header__nav,
+.movies__container__header,
+.footer__nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.movies__list{
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+.movie__container{
+    width:15rem;
+}
+
+.see__more_btn{
+    background-color: var(--light-color);
+    color: var(--btn-font-color);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem;
+}

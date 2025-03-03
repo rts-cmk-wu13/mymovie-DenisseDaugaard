@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family:"Merriweather" ;
+    src: url(/fonts/Merriweather-Regular.ttf);
+}
+@font-face {
+    font-family:"Mulish" ;
+    src: url(/fonts/Mulish-VariableFont_wght.ttf);
+}
+
+:root{
+    color-scheme: light dark;
+    --dark-color:#15141F;
+    --light-color:#DBE3FF;
+    --btn-font-color:#88A4E8;
+    --main-bg-color:white;
+}
+
+
+
+.dark-mode{
+    color: light-dark(var(--dark-color), var(--light-color));
+    /* background-color: light-dark(var(--light-color), var(--dark-color)); */
+}
+
+html{
+    color: light-dark(var(--dark-color), var(--main-bg-color));
+    background-color: light-dark(var(--main-bg-color), var(--dark-color));
+    font-family: "Mulish",Arial, Helvetica, sans-serif;
+}
+
+[data-dark= "true"]{
+    color-scheme: dark;
+}
+
+[data-dark= "false"]{
+    color-scheme: light;
+}
+
+
+h1.font__merriweather,
+h2.font__merriweather,
+h3.font__merriweather{
+    font-family:"Merriweather", Arial, Helvetica, serif;
+}
