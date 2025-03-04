@@ -85,7 +85,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                          <img class="popular__movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
                      </figure>
                      <section class="popular__movie__info">
-                         <h3>${movie.original_title}</h3>
+                         <a href='details.html?id=${movie.id}'>${movie.original_title}</a>
                          <div class="popular__movie__raiting">
                              <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
                              <p class="movie__popularity grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
@@ -95,6 +95,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                          </div>
                          <span class="popular__movie__duration">
                             <i class="fa-regular fa-clock"></i>
+                            <p class="movie__duration__runtime"></p>
                         </span>
 
                      </section>
@@ -107,20 +108,20 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
         document.querySelector("main").append(movieList, popularMovies)
     })// end of fetch popular
         
-     
 
-    // fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=189631aa3c5e912051d4d2bcb67373cb",
+
+     
+    // fetch("https://api.themoviedb.org/3/discover/movie?api_key=189631aa3c5e912051d4d2bcb67373cb",
     //     {
-    //     headers: {
+    //       headers: {
     //         accept: 'application/json',
     //         Authorization: 'Bearer //eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODk2MzFhYTNjNWU5MTIwNTFkNGQyYmNiNjczNzNjYiIsIm5iZiI6MTc0MDk5MDUyMC4xNDMwMDAxLCJzdWIiOiI2N2M1NjgzOGEzMjc3YWI0YTFlNzY3MTciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.OEUA7jI-KknE9ZdeN-pVfSw9Dq9cdiaB4jzvp4tAQbI'}
     //     })
     //     .then(response => response.json())
-    //     .then(genre=>{
-           
-    //     console.log(genre.genres);
-        
-           
-    //     })//End of fetch genre
+    //     .then(moreInfo =>{
+    //         console.log(moreInfo);
+            
+    //     })
 
+   
 

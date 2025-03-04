@@ -1,7 +1,8 @@
 
 .header__nav,
 .movies__container__header,
-.footer__nav{
+.footer__nav,
+.movie__details__header{
     display: flex;
     align-items: center;
     justify-content: space-between;
