@@ -1,0 +1,112 @@
+
+.header__nav,
+.movies__container__header,
+.footer__nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__nav{
+    padding: 1rem 1rem 0 1.5rem;
+}
+
+.movies__container__header{
+    margin: 1rem 1rem 1rem 0;
+}
+.movies__container,
+.popular__movies{
+  padding: 2rem 0 0 2rem;
+}
+
+.movies__list{
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+
+.grey__text{
+    color:var(--grey-text-color);
+}
+
+.movie__container img{
+    height: 14rem;
+    border-radius: 0.5rem;
+}
+
+.movie_popularity_container{
+    display: flex;
+    gap: 1rem;
+}
+
+.see__more_btn{
+padding: 4px 8px;
+border: 1px solid #AAA9B1;
+color: #AAA9B1;
+border-radius: 100px;
+background-color: white;
+
+    /* background-color: var(--light-color);
+    color: var(--btn-font-color);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem; */
+}
+
+/*    -------------------------POPULAR SECTION--------------------------- */
+
+.popular__movies__container,
+.popular__movie__raiting,
+.popular__movie__duration {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.popular__movies__list>*,
+.popular__movie__info>*{
+    margin-bottom: 0.5rem;
+}
+
+.popular__movie__img__container img{
+    height: 8rem;
+    border-radius: 0.5rem;
+}
+
+.popular__movie__genre{
+    display: flex;
+    gap: 0.25rem;
+}
+
+.popular__genders{
+    background-color: var(--light-color);
+    color: var(--btn-font-color);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-wrap: no-wrap;
+    font-size: 0.5rem;
+}
+
+
+/* ------------------------FOOTER--------------------- */
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    text-align: center;
+
+    /* position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 10px;
+    text-align: center; */
+}
