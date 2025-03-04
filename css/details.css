@@ -1,0 +1,13 @@
+.hero{
+    position: relative;
+}
+.details__header__nav{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content:space-between ;
+    padding: 1rem;
+    width: 100%; /* Ensures it takes full width of the parent */
+    left: 0; /* Align to the left edge of the parent */
+    right: 0;
+}

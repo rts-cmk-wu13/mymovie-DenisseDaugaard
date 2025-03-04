@@ -19,16 +19,24 @@
     --light-color:#DBE3FF;
     --btn-font-color:#88A4E8;
     --main-bg-color:white;
+    --grey-text-color:#9C9C9C;
+    --svg-light-color: #333333; /* Light mode color for SVG */
+    --svg-dark-color: #E0E0E0; /* Dark mode color for SVG */
+}
+
+.dark-mode-btn{
+    color: light-dark(var(--dark-color), var(--btn-font-color));
+    background-color: light-dark(var(--light-color), var(--light-color)); 
 }
 
 
-
-.dark-mode{
-    color: light-dark(var(--dark-color), var(--light-color));
-    /* background-color: light-dark(var(--light-color), var(--dark-color)); */
+[data-dark="true"] .dark-mode__svg {
+    filter: invert(92%) sepia(9%) saturate(150%) hue-rotate(180deg);
 }
 
-html{
+
+html,
+footer{
     color: light-dark(var(--dark-color), var(--main-bg-color));
     background-color: light-dark(var(--main-bg-color), var(--dark-color));
     font-family: "Mulish",Arial, Helvetica, sans-serif;
@@ -43,8 +51,26 @@ html{
 }
 
 
-h1.font__merriweather,
-h2.font__merriweather,
-h3.font__merriweather{
-    font-family:"Merriweather", Arial, Helvetica, serif;
+h1{
+    font-family:"Merriweather";
+    font-size: 1rem;
+}
+
+a{
+    font-size: 1rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+a:hover{
+    cursor: pointer;
+    color: rgb(216, 26, 26);
+}
+
+
+
+img .movie__img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
 }
