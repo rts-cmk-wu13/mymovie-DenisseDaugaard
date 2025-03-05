@@ -66,7 +66,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
         <section class="details__movie__cast">
             <header class="movies__container__header">
                     <h1>Cast</h1>
-                    <button class="see__more_btn dark-mode-btn">See more</button>
+                    <button class="see__more__btn dark-mode-btn">See more</button>
             </header>
             <div class="cast__list"></div>
         </section>

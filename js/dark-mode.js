@@ -8,7 +8,7 @@ function darkMode (){
     //console.log(switchElm);
     //console.log(IsDarkMode);
     //console.log(browserDark);
-
+   
     let darkState = null
 
     if(IsDarkMode == null){
@@ -21,6 +21,7 @@ function darkMode (){
     if(IsDarkMode || browserDark){
         switchElm.checked = true 
         rootElm.setAttribute("data-dark", switchElm.checked)
+    
     } 
 
     if(IsDarkMode  == false || !browserDark){

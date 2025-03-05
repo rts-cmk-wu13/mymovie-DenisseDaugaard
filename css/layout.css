@@ -43,18 +43,12 @@
     gap: 1rem;
 }
 
-.see__more_btn{
+.see__more__btn{
 padding: 4px 8px;
 border: 1px solid #AAA9B1;
 color: #AAA9B1;
 border-radius: 100px;
 background-color: white;
-
-    /* background-color: var(--light-color);
-    color: var(--btn-font-color);
-    border: none;
-    border-radius: 2rem;
-    padding: 0.5rem; */
 }
 
 /*    -------------------------POPULAR SECTION--------------------------- */
@@ -96,18 +90,18 @@ background-color: white;
 /* ------------------------FOOTER--------------------- */
 
 footer{
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: white;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     padding: 1.5rem 2rem;
-    text-align: center;
-
-    /* position: sticky;
-    bottom: 0;
-    background-color: white;
-    padding: 10px;
     text-align: center; */
+
+    position: sticky;
+    bottom: 0;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
