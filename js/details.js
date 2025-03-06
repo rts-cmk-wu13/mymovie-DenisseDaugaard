@@ -23,7 +23,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
     movieDetails.classList.add("movie__details")
     movieDetails.innerHTML = `
     <section class="hero">
-        <img class="hero__img" src="https://image.tmdb.org/t/p/w500/${details.backdrop_path}" alt="backprop of the movie ${details.original_title}">
+        <img class="hero__img" src="https://image.tmdb.org/t/p/original/${details.backdrop_path}" alt="backprop of the movie ${details.original_title}">
     </section>
     <section class="movie__details__info">
         
@@ -66,7 +66,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
         <section class="details__movie__cast">
             <header class="movies__container__header">
                     <h1>Cast</h1>
-                    <button class="see__more__btn dark-mode-btn">See more</button>
+                    <button class="see__more__btn dark-mode-btn cast__btn">See more</button>
             </header>
             <div class="cast__list"></div>
         </section>
@@ -86,16 +86,61 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=189631aa3c5
     .then(response => response.json())
     .then(credits =>{
        console.log(credits);
-
+        
+      
        let castList = document.querySelector(".cast__list");
        //console.log(castList);
        castList.innerHTML = `
        ${credits.cast.map(castElm => `
-            <figure>
-            <img class="cast__list__img" src="https://image.tmdb.org/t/p/original${castElm.profile_path}" alt="picture of ${castElm.name}">
+            <figure class="cast__img__container">
+            <img class="cast__list__img" src="https://image.tmdb.org/t/p/w500${castElm.profile_path}" alt="picture of ${castElm.name}">
             <figcaption>${castElm.name}</figcaption>
             </figure>
-        `).join("")}
-       `
+        `).join("")}`
+
+    console.log(document.querySelectorAll(".cast__list__img"))
+         moreCast ()
+
+   function moreCast (){
+
+       let castBtn = document.querySelector(".cast__btn")
+        //console.log(castBtn);
+        let moreCastElms = document.querySelectorAll('.cast__img__container:nth-child(n+5)')
+        //console.log(moreCastElms);
+        let hideCastBtn = document.createElement("button")
+        hideCastBtn.classList.add("see__more__btn", "show__less__btn")
+        hideCastBtn.textContent = "Show less"
+           castBtn.addEventListener("click", function(event){
+               if(event.target){
+                castBtn.classList.add("cast__btn--hidden")
+                   moreCastElms.forEach(castElm =>{
+                       castElm.style.display =  "block"
+                       document.querySelector(".details__movie__cast").append(hideCastBtn)
+                   })
+               }
+           })
+
+           hideCastBtn.addEventListener("click", function(event){
+            if(event.target){
+                moreCastElms.forEach(castElm =>{
+                    castElm.style.display =  "none"
+                    castBtn.classList.remove("cast__btn--hidden")
+                    hideCastBtn.remove()
+                })
+            }
+           })
+
+   } 
+
+   document.querySelectorAll(".cast__list__img").forEach(img => {
+    img.onerror = function () {
+        this.onerror = null;  // Prevent looping
+        this.src = "img/placeholder.png"; // Set your placeholder image
+        this.classList.add("cast__placeholder__img")
+    };
+})
+
+}) // end of credits fetch
+
     
-    }) // end of credits fetch
+    

@@ -13,41 +13,10 @@
     src: url(/fonts/Mulish-VariableFont_wght.ttf);
 }
 
-:root{
-    color-scheme: light dark;
-    --dark-color:#15141F;
-    --light-color:#DBE3FF;
-    --btn-font-color:#88A4E8;
-    --main-bg-color:white;
-    --grey-text-color:#9C9C9C;
-    --svg-light-color: #333333; /* Light mode color for SVG */
-    --svg-dark-color: #E0E0E0; /* Dark mode color for SVG */
-}
-
-.dark-mode-btn{
-    color: light-dark(var(--dark-color), var(--btn-font-color));
-    background-color: light-dark(var(--light-color), var(--light-color)); 
-}
-
-
-[data-dark="true"] .dark-mode__svg {
-    filter: invert(92%) sepia(9%) saturate(150%) hue-rotate(180deg);
-}
-
-
-html,
-footer{
-    color: light-dark(var(--dark-color), var(--main-bg-color));
-    background-color: light-dark(var(--main-bg-color), var(--dark-color));
-    font-family: "Mulish",Arial, Helvetica, sans-serif;
-}
-
-[data-dark= "true"]{
-    color-scheme: dark;
-}
-
-[data-dark= "false"]{
-    color-scheme: light;
+a{
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 
@@ -58,18 +27,20 @@ h1{
 
 a{
     font-size: 1rem;
-    color: var(--dark-color);
     text-decoration: none;
     font-weight: bold;
 }
 a:hover{
-    cursor: pointer;
     color: rgb(216, 26, 26);
 }
 
 
+button:hover,
+a:hover{
+cursor: pointer;
+}
 
-img .movie__img{
+img{
     width: 100%;
     height: 100%;
     object-fit:cover;

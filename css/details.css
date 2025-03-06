@@ -1,24 +1,29 @@
 .hero{
     position: relative;
+   
 }
 
-.hero__img{
-    width: 100%;
-}
 
 .movie__details__info>*,
-.movie__details__description__title{
+.movie__details__description__title,
+.cast__list figure{
     margin-bottom: 1rem;
 }
 
 .movie__details__info{
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    position: absolute;
+    top: 12rem;
+    width: 100%;
 }
 
 .details__header__nav{
     position: absolute;
     z-index: 1;
     display: flex;
+    align-items: center;
     justify-content:space-between ;
     padding: 1rem;
     width: 100%; /* Ensures it takes full width of the parent */
@@ -42,16 +47,34 @@
 }
 
 
-/* ------------------CAST---------------- */
+/* ---------------------------------------CAST---------------------------- */
 .cast__list{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-   
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 0.5rem;
 }
-.cast__list:first-child:nth-last-child(5) {
-  background-color: red;
+
+
+.cast__list figcaption{
+    font-size:0.85rem;
 }
-.cast__list__img{
-   height: 7rem;
-    border-radius: 0.5rem;
+
+
+.cast__img__container:nth-child(n+5){
+   display: none;
+}
+
+.cast__img__container{
+    height: 5.5rem;
+    min-height: 5rem;
+    margin-top: 1rem;
+}
+ 
+.cast__btn--hidden{
+    display: none;
+}
+
+.show__less__btn {
+    margin-top: 2rem;
+    margin-left: 75%;
 }

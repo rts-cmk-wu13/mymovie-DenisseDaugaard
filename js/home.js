@@ -19,7 +19,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                 <button class="see__more__btn dark-mode-btn">See more</button>
     </header>
     <div class="movies__list">
-        ${data.results.map(movie => `
+        ${moviesEng.map(movie => `
         <section>
         <figure class="movie__container">
         <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
@@ -29,7 +29,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
         <h2></h2>
          <div class="movie_popularity_container">
             <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-            <p class="movie_popularity grey_text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
+            <p class="movie_popularity grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
         </div>
         </section>
         </section>
@@ -38,10 +38,6 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
     `
    
     
-    
-
-
-
     let popularMovies = document.createElement("article")
     popularMovies.classList.add("popular__movies")
     popularMovies.innerHTML = `
@@ -74,7 +70,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                 .then(response => response.json())
                 .then(details => {
 
-                   console.log(details);
+                   //console.log(details);
                    let movieSection = document.createElement("section")
                    movieSection.classList.add("popular__movies__container")
                    movieSection.innerHTML = `
@@ -104,7 +100,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                    
                    // Append section to main container
                    
-                   document.querySelector("main").append(movieList , popularMovies)
+                   main.append(movieList , popularMovies)
                });
            });
        });
