@@ -1,0 +1,38 @@
+
+:root{
+    color-scheme: light dark;
+    --dark-color:#15141F;
+    --light-color:#DBE3FF;
+    --btn-font-color:#88A4E8;
+    --main-bg-color:white;
+    --grey-text-color:#9C9C9C;
+   
+}
+
+
+
+
+html,
+footer,
+.movie__details__info,
+.see__more__btn{
+    color: light-dark(var(--dark-color), var(--main-bg-color));
+    background-color: light-dark(var(--main-bg-color), var(--dark-color));
+    font-family: "Mulish",Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: light-dark(var(--dark-color), var(--main-bg-color))
+}
+
+[data-dark= "true"]{
+    color-scheme: dark;
+}
+
+[data-dark="true"] .dark-mode__svg {
+    filter: invert(100%) sepia(10%) saturate(100%) hue-rotate(-185deg);
+}
+
+[data-dark= "false"]{
+    color-scheme: light;
+}
