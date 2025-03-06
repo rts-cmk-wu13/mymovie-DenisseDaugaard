@@ -5,7 +5,6 @@ function darkMode (){
     //console.log(switchElm);
     let IsDarkMode = readFromLocalStorage("isDarkMode")
     let browserDark = window.matchMedia("(prefers-color-scheme:dark)").matches
-    let movieIcon = document.querySelector(".movie__icon")
     //console.log(movieIcon); 
     
     //console.log(switchElm);
@@ -24,13 +23,11 @@ function darkMode (){
     if(IsDarkMode || browserDark){
         switchElm.checked = true 
         rootElm.setAttribute("data-dark", switchElm.checked)
-        movieIcon.src = movieIcon.dataset.dark
     } 
 
     if(IsDarkMode  == false || !browserDark){
         switchElm.checked = false 
         rootElm.setAttribute("data-dark", switchElm.checked)
-        movieIcon.src = "http://127.0.0.1:5501/img/movie-icon.svg"
     }
         
 
@@ -45,12 +42,6 @@ function darkMode (){
                                                                 // depends on the if statement, it could be true or false!!!!!
         }
 
-                // Update the movie icon dynamically
-        if (switchElm.checked) {
-            movieIcon.src = movieIcon.dataset.dark;
-        } else {
-            movieIcon.src = "http://127.0.0.1:5501/img/movie-icon.svg";
-        }
     })
 
 

@@ -45,7 +45,7 @@
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
 }
 .movie__container{
-  width: 8rem;
+  width: 8.5rem;
 }
 
 .movie_popularity_container{
@@ -96,23 +96,23 @@ border-radius: 100px;
 }
 
 
-/* ------------------------FOOTER--------------------- */
+/* ----------------------------------FOOTER--------------------------- */
 
 footer{
     position: sticky;
     bottom: 0;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
 }
 
 .footer__icon__svg{
-    max-width: 2.5rem;
-    max-height: 2.5rem;
+    max-width: 2rem;
+    max-height: 2rem;
     
  }
 
  .movie__icon{
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
  }

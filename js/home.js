@@ -42,9 +42,9 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
     popularMovies.classList.add("popular__movies")
     popularMovies.innerHTML = `
      <header class="movies__container__header">
-                 <h1>Popular</h1>
-                 <button class="see__more__btn dark-mode-btn">See more</button>
-            </header>
+        <h1>Popular</h1>
+        <button class="see__more__btn dark-mode-btn">See more</button>
+    </header>
            
     `
     fetch("https://api.themoviedb.org/3/movie/popular?api_key=189631aa3c5e912051d4d2bcb67373cb",
@@ -69,6 +69,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                 })
                 .then(response => response.json())
                 .then(details => {
+
 
                    //console.log(details);
                    let movieSection = document.createElement("section")
@@ -95,22 +96,23 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
 
                     </section>
                    ` 
-                   popularMovies.appendChild(movieSection);      
+                        popularMovies.appendChild(movieSection);      
                    })
                    
-                   // Append section to main container
                    
                    main.append(movieList , popularMovies)
-               });
-           });
-       });
+               })
+           })
+       })
+
        
+    
        // Function to format runtime
        function formatMinutes(minutes) {
-           if (!minutes) return "N/A"; // If runtime is unavailable
-           let hours = Math.floor(minutes / 60);
-           let remainingMinutes = minutes % 60;
-           return `${hours}h ${remainingMinutes}min`;
+           if (!minutes) return "N/A" // If runtime is unavailable
+           let hours = Math.floor(minutes / 60)
+           let remainingMinutes = minutes % 60
+           return `${hours}h ${remainingMinutes}min`
        }
        
         
