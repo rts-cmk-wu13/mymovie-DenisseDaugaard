@@ -1,0 +1,25 @@
+@media screen and (width >= 60rem) {
+
+    .popular__movies{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .popular__header{
+        grid-column: 1 /-1;
+    }
+
+    .show__less__btn {
+        margin-top: 2rem;
+        margin-left: 85%;
+    }
+
+}
+@media screen and (width >= 67rem) {
+
+    .popular__movies{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}

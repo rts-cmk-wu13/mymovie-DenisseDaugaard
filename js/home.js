@@ -7,6 +7,8 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
 })
 .then(response => response.json())
 .then(data =>{
+    console.log(data);
+    
 
     let moviesEng = data.results.filter(movies => movies.original_language == "en")
     //console.log(moviesEng);// this give me only movies in english 
@@ -41,7 +43,7 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
     let popularMovies = document.createElement("article")
     popularMovies.classList.add("popular__movies")
     popularMovies.innerHTML = `
-     <header class="movies__container__header">
+     <header class="movies__container__header popular__header">
         <h1>Popular</h1>
         <button class="see__more__btn dark-mode-btn">See more</button>
     </header>

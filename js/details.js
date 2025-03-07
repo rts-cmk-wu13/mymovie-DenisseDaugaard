@@ -47,7 +47,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
     <section class="movie__details__info">
         
             <header class="movie__details__header">
-                <h1>${details.original_title}</h1>
+                <h1 class="details__movie__title">${details.original_title}</h1>
                 <i class="fa-regular fa-bookmark save" data-name="${details.original_title}"></i>
             </header>
     
@@ -148,7 +148,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=189631aa3c5
        castList.innerHTML = `
        ${credits.cast.map(castElm => `
             <figure class="cast__img__container">
-            <img class="cast__list__img" src="https://image.tmdb.org/t/p/w500${castElm.profile_path}" alt="picture of ${castElm.name}">
+            <img class="cast__list__img" src="https://image.tmdb.org/t/p/w500${castElm.profile_path}" srcset="https://image.tmdb.org/t/p/w500${castElm.profile_path} 80w" alt="picture of ${castElm.name}">
             <figcaption>${castElm.name}</figcaption>
             </figure>
         `).join("")}`
@@ -191,6 +191,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=189631aa3c5
                 this.onerror = null;  // Prevent looping
                 this.src = "img/placeholder.png"; // Set your placeholder image
                 this.classList.add("cast__placeholder__img")
+                this.srcset ="img/placeholder.png 100w"
             };
         })
 

@@ -29,7 +29,7 @@ rootElement.append(header, main, footer)
 
 
     let switchElm = header.querySelector(".switch__elm")
-    console.log(switchElm);
+    //console.log(switchElm);
     let movieIcon = document.querySelector(".movie__icon")
 
     if (localStorage.getItem("isDarkMode") == "true") {
@@ -37,7 +37,7 @@ rootElement.append(header, main, footer)
         switchElm.checked
         movieIcon.src = movieIcon.dataset.dark
     } else{
-        console.log("dark-mode");
+        //console.log("dark-mode");
         movieIcon.src = "http://127.0.0.1:5501/img/movie-icon.svg"
         switchElm.checked
     }

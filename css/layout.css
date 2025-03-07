@@ -13,10 +13,11 @@
 
 .movies__container__header{
     padding: 1rem 1rem 1rem 0;
+    width: 100%;
 }
 .movies__container,
 .popular__movies{
-  padding: 2rem 0 0 2rem;
+  padding: 1rem 0 0 2rem;
 }
 
 .movies__list{
@@ -46,10 +47,10 @@
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
 }
 .movie__container{
-  min-width:9rem;
+    width: min(38vw, 12rem);
 }
 
-.movie_popularity_container{
+.popular__movie__raiting{
     display: flex;
     gap: 0.5rem;
 }
@@ -86,9 +87,7 @@ color: var(--grey-text-color);
 }
 
 .popular__movie__img__container{
-   width: 5.5rem;
-   min-width: 5.5rem;
-   max-width: 10rem;
+   width: min(22.5vw, 9rem);
    margin-bottom: 1rem;
 }
 

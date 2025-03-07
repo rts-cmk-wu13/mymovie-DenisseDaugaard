@@ -60,7 +60,7 @@
 }
 
 .cast__img__container{
-    height: 5.5rem;
+    height: min(23.5vw, 12rem);
     margin-top: 1rem;
 }
  
@@ -77,3 +77,4 @@
 .saved{
    color: rgb(225, 35, 60);
 }
+
