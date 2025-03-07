@@ -1,3 +1,20 @@
+let detailsBody= document.documentElement.querySelector("body")
+console.log(detailsBody);
+detailsBody.classList.add("details__body")
+
+let detailsHeader = detailsBody.querySelector("header")
+detailsHeader.innerHTML = `
+<nav class="details__header__nav">
+     <a href="javascript: history.back()"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
+     <div class="ckeck-box__container">
+         <label class="switch">
+         <input type="checkbox" id="switch__elm">
+         <span class="slider round"></span>
+         </label>
+     </div>
+   </nav>
+`
+
 let favorites = readFromLocalStorage("favoriteMovies") || []
 
 let params = new URLSearchParams(window.location.search)
@@ -40,7 +57,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
             </div>
             <div class="popular__movie__genre">
                     ${details.genres.map(genre =>`
-                    <p class="popular__genders">${genre.name}</p>
+                    <p class="movie__genres">${genre.name}</p>
                     `).join("")}
             </div>  
             <div class="details__movie__specs">
@@ -75,16 +92,16 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
 
     </section>
     `
-    document.querySelector("main").append(movieDetails)
+    detailsBody.querySelector("main").append(movieDetails)
 
     let currenIcon = document.querySelector(".fa-bookmark")
-    console.log(currenIcon);
+    //console.log(currenIcon);
     
     if(favorites.includes(currenIcon.dataset.name)){
         currenIcon.classList.add("fa-solid")
         currenIcon.classList.add("saved")
     }
-    
+
     let saveIcon = document.querySelector(".save")
     saveMovies()
     function saveMovies(){
@@ -112,7 +129,7 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=189631aa3c5e912051d
         })
    }
    
-}) // end of detais fetch
+}) // end of details fetch
 
 
 fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=189631aa3c5e912051d4d2bcb67373cb`,

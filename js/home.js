@@ -21,17 +21,17 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
     <div class="movies__list">
         ${moviesEng.map(movie => `
         <section>
-        <figure class="movie__container">
-        <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
-        </figure>
-        <section>
-         <a href='details.html?id=${movie.id}'>${movie.original_title}</a>
-        <h2></h2>
-         <div class="movie_popularity_container">
-            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-            <p class="movie_popularity grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
-        </div>
-        </section>
+            <figure class="movie__container">
+            <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
+            </figure>
+
+            <section>
+                <a href='details.html?id=${movie.id}'>${movie.original_title}</a>
+                    <div class="popular__movie__raiting">
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                        <p class="grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
+                    </div>
+            </section>
         </section>
             `).join("")}
     </div>
@@ -82,17 +82,17 @@ fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=189631aa3c5e912051
                     <a href='details.html?id=${movie.id}'>${movie.original_title}</a>
                          <div class="popular__movie__raiting">
                              <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                             <p class="movie__popularity grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
+                             <p class=" grey__text">${Math.round(movie.vote_average * 10) / 10} /10 IMDb</p>
                          </div>
                          <div class="popular__movie__genre">
                            ${details.genres.map(genre => `
-                            <p class="popular__genders">${genre.name}</p>
+                            <p class="movie__genres">${genre.name}</p>
                             `).join("")}
                          </div>
-                         <span class="popular__movie__duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <p class="movie__duration__runtime">${formatMinutes(details.runtime) }</p>
-                        </span>
+                         <div class="popular__movie__duration">
+                            <i class="fa-regular fa-clock movie__runtime"></i>
+                            <p class="movie__runtime">${formatMinutes(details.runtime)}</p>
+                        </div>
 
                     </section>
                    ` 

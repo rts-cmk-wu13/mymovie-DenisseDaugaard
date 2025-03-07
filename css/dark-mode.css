@@ -1,17 +1,4 @@
 
-:root{
-    color-scheme: light dark;
-    --dark-color:#15141F;
-    --light-color:#DBE3FF;
-    --btn-font-color:#88A4E8;
-    --main-bg-color:white;
-    --grey-text-color:#9C9C9C;
-   
-}
-
-
-
-
 html,
 footer,
 .movie__details__info,

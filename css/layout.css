@@ -29,23 +29,24 @@
 
 
 .icon{
-    max-width: 2rem;
+    width: 2rem;
  }
 
 
 .grey__text{
     color:var(--grey-text-color);
-    font-size: 0.825rem;
 }
 
 .movie__container img,
 .popular__movie__img__container img,
-.cast__list__img{
+.cast__list__img,
+.details__body,
+.movie__details__info{
     border-radius: 0.5rem;
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
 }
 .movie__container{
-  width: 8.5rem;
+  min-width:9rem;
 }
 
 .movie_popularity_container{
@@ -53,11 +54,12 @@
     gap: 0.5rem;
 }
 
+
 .see__more__btn{
 padding: 4px 8px;
 border: 1px solid #AAA9B1;
 border-radius: 100px;
-
+color: var(--grey-text-color);
 }
 
 /*    -------------------------------POPULAR SECTION------------------------------ */
@@ -69,13 +71,24 @@ border-radius: 100px;
     gap: 0.5rem;
 }
 
+.popular__movie__raiting{
+    margin-top: 0.5rem;
+}
+
+.popular__movie__duration{
+    align-items: center;
+}
+
+
 .popular__movies__list>*,
 .popular__movie__info>*{
     margin-bottom: 0.5rem;
 }
 
 .popular__movie__img__container{
-   width: 5rem;
+   width: 5.5rem;
+   min-width: 5.5rem;
+   max-width: 10rem;
    margin-bottom: 1rem;
 }
 
@@ -83,8 +96,7 @@ border-radius: 100px;
     display: flex;
     gap: 0.25rem;
 }
-
-.popular__genders{
+.movie__genres{
     background-color: var(--light-color);
     color: var(--btn-font-color);
     border: none;
@@ -92,7 +104,7 @@ border-radius: 100px;
     padding: 0.5rem;
     text-transform: uppercase;
     text-wrap: no-wrap;
-    font-size: 0.5rem;
+    font-weight: bold;
 }
 
 
