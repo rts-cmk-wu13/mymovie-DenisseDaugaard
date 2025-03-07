@@ -13,30 +13,67 @@
     src: url(/fonts/Mulish-VariableFont_wght.ttf);
 }
 
-a{
-    font-size: 1rem;
-    text-decoration: none;
-    font-weight: bold;
-}
 
+:root{
+    color-scheme: light dark;
+    --dark-color:#15141F;
+    --light-color:#DBE3FF;
+    --btn-font-color:#88A4E8;
+    --main-bg-color:white;
+    --grey-text-color:#9C9C9C;
+
+    --genres-font-size:clamp(0.5rem, 2vw, 1rem);
+    --see-more-btn-font-size: clamp(0.625rem, 2.5vw, 1.5rem); 
+    --p-small-font-size: clamp(0.75rem, 2.5vw, 1.75rem); 
+    --grey-text-font-size:clamp(0.825rem,2vw, 1.5rem);
+    --movie-title-font-size: clamp(0.95rem, 3.5vw, 2rem); 
+    --primary-h1-font-size:clamp(1rem, 3.5vw, 2rem);
+    --largeH1-font-size: clamp(1.25rem, 3.5vw, 2.5rem); 
+}
 
 h1{
     font-family:"Merriweather";
-    font-size: 1rem;
+    font-size: var(--primary-h1-font-size);
 }
 
 a{
-    font-size: 1rem;
+    font-size: var(--movie-title-font-size);
     text-decoration: none;
     font-weight: bold;
 }
+
+.see__more__btn{
+    font-size: var(--see-more-btn-font-size);
+}
+
+.grey__text{
+    font-size: var(--grey-text-font-size);
+    color: var(--grey-text-color);
+}
+
+.movie__runtime{
+    font-size: (var(--p-small-font-size));
+}
+
+.movie__genres{
+    font-size: var(--genres-font-size);
+}
+
+.details__movie__specs,
+.cast__list figcaption{
+    font-size: var(--grey-text-font-size);
+}
+
+
+
 a:hover{
     color: rgb(216, 26, 26);
 }
 
 
 button:hover,
-a:hover{
+a:hover,
+.save:hover{
 cursor: pointer;
 }
 
@@ -45,3 +82,7 @@ img{
     height: 100%;
     object-fit:cover;
 }
+
+html {
+    scrollbar-width: none;
+  }

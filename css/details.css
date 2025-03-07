@@ -1,8 +1,9 @@
-.hero{
+.details__body{
     position: relative;
-   
-}
+    max-width:58rem ;
+    margin-inline: auto;
 
+}
 
 .movie__details__info>*,
 .movie__details__description__title,
@@ -15,9 +16,10 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     position: absolute;
-    top: 12rem;
+    top: 89.35%;
     width: 100%;
 }
+
 
 .details__header__nav{
     position: absolute;
@@ -29,14 +31,13 @@
     width: 100%; /* Ensures it takes full width of the parent */
     left: 0; /* Align to the left edge of the parent */
     right: 0;
+    top: 2%;
 }
 
 
 .details__movie__specs{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    font-size: 0.75rem;
-
 }
 
 .details__movie__specs__title{
@@ -54,19 +55,12 @@
     gap: 0.5rem;
 }
 
-
-.cast__list figcaption{
-    font-size:0.85rem;
-}
-
-
 .cast__img__container:nth-child(n+5){
    display: none;
 }
 
 .cast__img__container{
     height: 5.5rem;
-    min-height: 5rem;
     margin-top: 1rem;
 }
  
@@ -77,4 +71,9 @@
 .show__less__btn {
     margin-top: 2rem;
     margin-left: 75%;
+}
+
+
+.saved{
+   color: rgb(225, 35, 60);
 }
