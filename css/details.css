@@ -6,8 +6,7 @@
 }
 
 .movie__details__info>*,
-.movie__details__description__title,
-.cast__list figure{
+.movie__details__description__title{
     margin-bottom: 1rem;
 }
 
@@ -19,7 +18,6 @@
     top: 89.35%;
     width: 100%;
 }
-
 
 .details__header__nav{
     position: absolute;
@@ -55,21 +53,20 @@
     gap: 0.5rem;
 }
 
-.cast__img__container:nth-child(n+5){
+.cast__card:nth-child(n+5){
    display: none;
 }
 
 .cast__img__container{
     height: min(23.5vw, 12rem);
-    margin-top: 1rem;
 }
- 
+
 .cast__btn--hidden{
     display: none;
 }
 
 .show__less__btn {
-    margin-top: 2rem;
+    margin-block: 0.5rem;
     margin-left: 75%;
 }
 

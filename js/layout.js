@@ -2,6 +2,7 @@ let rootElement = document.querySelector("body")
 //console.log(rootElement);
 
 //adding header, main and footer 
+
 let header = document.createElement("header")
 header.innerHTML = `
 <nav class="header__nav">
@@ -13,8 +14,44 @@ header.innerHTML = `
                 <span class="slider round"></span>
 </nav>
 `
+// let headerSwitch = header.querySelector(".switch__elm")
+// console.log(headerSwitch);
 
+// let isDarkMode = document.documentElement.getAttribute("data-dark") === "true";
+// if (isDarkMode) {
+//     console.log("Dark mode is enabled!");
+//    headerSwitch.checked
+//    console.log( headerSwitch.checked);
+   
+// }
+
+
+/* --------------------------main------------------------ */
 let main = document.createElement("main")
+
+let movieList = document.createElement("article")
+movieList.classList.add("movies__container")
+movieList.innerHTML = `
+<header class="movies__container__header">
+            <h1>Now Showing</h1>
+            <button class="see__more__btn dark-mode-btn">See more</button>
+</header>
+<div class="movie__list"></div>
+`
+
+let popularMovies = document.createElement("article")
+popularMovies.classList.add("popular__movies")
+popularMovies.innerHTML = `
+  <header class="movies__container__header popular__header">
+         <h1>Popular</h1>
+         <button class="see__more__btn dark-mode-btn load__pop__btn">See more</button>
+     </header>
+     <div class="popular__movie__list"></div>
+`
+main.append(movieList, popularMovies)
+
+
+/* ---------------------footer---------------------------- */
 
 let footer = document.createElement("footer")
 footer.innerHTML = `
@@ -33,7 +70,7 @@ rootElement.append(header, main, footer)
     let movieIcon = document.querySelector(".movie__icon")
 
     if (localStorage.getItem("isDarkMode") == "true") {
-        console.log("light-mode");
+        //console.log("light-mode");
         switchElm.checked
         movieIcon.src = movieIcon.dataset.dark
     } else{

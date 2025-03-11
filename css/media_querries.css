@@ -1,6 +1,6 @@
 @media screen and (width >= 60rem) {
 
-    .popular__movies{
+    .popular__movie__list{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -14,10 +14,14 @@
         margin-left: 85%;
     }
 
+    .cast__list{
+        gap: 2rem;
+    }
+
 }
 @media screen and (width >= 67rem) {
 
-    .popular__movies{
+    .popular__movie__list{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }

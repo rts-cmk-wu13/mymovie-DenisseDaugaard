@@ -20,7 +20,7 @@
   padding: 1rem 0 0 2rem;
 }
 
-.movies__list{
+.movie__list{
     display: flex;
     gap: 1rem;
     overflow-x: scroll;
@@ -63,9 +63,14 @@ border-radius: 100px;
 color: var(--grey-text-color);
 }
 
+/* .movie__list a:nth-last-child(3){
+    background-color: orange;
+}  */
+
+
 /*    -------------------------------POPULAR SECTION------------------------------ */
 
-.popular__movies__container,
+.popular__movie__container,
 .popular__movie__raiting,
 .popular__movie__duration {
     display: flex;
@@ -81,9 +86,10 @@ color: var(--grey-text-color);
 }
 
 
-.popular__movies__list>*,
-.popular__movie__info>*{
-    margin-bottom: 0.5rem;
+.popular__movie__list>*,
+.popular__movie__info>*,
+.pupular__movie__title{
+    margin-bottom: 1rem;
 }
 
 .popular__movie__img__container{
@@ -95,7 +101,7 @@ color: var(--grey-text-color);
     display: flex;
     gap: 0.25rem;
 }
-.movie__genres{
+.popular__genres{
     background-color: var(--light-color);
     color: var(--btn-font-color);
     border: none;
@@ -105,6 +111,10 @@ color: var(--grey-text-color);
     text-wrap: no-wrap;
     font-weight: bold;
 }
+
+/* .popular__movie__container:nth-last-child(3){
+    background-color: blueviolet;
+} */
 
 
 /* ----------------------------------FOOTER--------------------------- */
