@@ -5,7 +5,7 @@ detailsBody.classList.add("details__body")
 let detailsHeader = detailsBody.querySelector("header")
 detailsHeader.innerHTML = `
     <nav class="details__header__nav">
-     <a href="javascript: history.back()"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
+     <a href="index.html"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
      <div class="ckeck-box__container">
          <label class="switch">
          <input type="checkbox" class ="switch__elm" id="switch__elm">
@@ -22,13 +22,7 @@ let params = new URLSearchParams(window.location.search)
 let movieId = params.get("id")
 //console.log(movieId);
 
-function formatMinutes(minutes) {
-    let hours = Math.floor(minutes / 60);
-    let remainingMinutes = minutes % 60;
-    return `${hours}h ${remainingMinutes}min`;
-}
-
-const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=release_dates,credits`;
+const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=release_dates,credits,videos`;
 const options = {
   method: 'GET',
   headers: {
@@ -42,11 +36,12 @@ fetch(url, options)
   .then(details =>{
     console.log(details);
 
+  
     let movieDetails = document.createElement("article")
     movieDetails.classList.add("movie__details")
     movieDetails.innerHTML = `
     <section class="hero">
-        <img class="hero__img" src="https://image.tmdb.org/t/p/original/${details.backdrop_path}" alt="backprop of the movie ${details.original_title}">
+        <img class="hero__img" src="https://image.tmdb.org/t/p/original/${details.backdrop_path}" alt="Backdrop of the movie ${details.original_title}">
     </section>
     <section class="movie__details__info">
         
@@ -77,7 +72,7 @@ fetch(url, options)
                 </span>        
                 <span class="rating__specs">
                     <p class="details__movie__specs__title">Rating</p>
-                    <p class="details__movie__specs__content">${ rating()}</p>
+                    <p class="details__movie__specs__content">${rating()}</p>
                 </span>        
             </div>
 
@@ -85,6 +80,10 @@ fetch(url, options)
             <h1 class="movie__details__description__title">Description</h1>
             <p class="grey__text">${details.overview}</p>
         </section>
+
+        <div class="trailer__container">
+        ${videoTrailer()}
+        </div>
 
         <section class="details__movie__cast">
             <header class="movies__container__header">
@@ -101,10 +100,40 @@ fetch(url, options)
                 </section>
                 `).join("")}
             </div>
-        </section>
-       
+        </section> 
     </section>
     `
+    function videoTrailer(){
+
+        const videos = details.videos.results;
+        console.log(videos);
+        if (videos.length > 0) {
+                //Find the first official trailer (YouTube is common)
+                const trailer = videos.find(video => video.type === "Trailer" && video.site === "YouTube" && video.name == "Official Trailer");
+                console.log(trailer);
+                
+               return  `<h1 class="video__title">${trailer.name}</h1>
+                         <iframe
+                             src="https://www.youtube.com/embed/${trailer.key}" 
+                             frameborder="0" allowfullscreen>
+                        </iframe>`
+        }  else {
+            return `<div class="video__error">
+                    <h2 class="video__title">Trailer not Available</h2>
+                    <img src="img/video_placeholder.png" alt="placeholder image for the misssing trailer" >
+                    </div>
+                `
+
+        }
+    }
+
+    
+
+    function formatMinutes(minutes) {
+        let hours = Math.floor(minutes / 60);
+        let remainingMinutes = minutes % 60;
+        return `${hours}h ${remainingMinutes}min`;
+    }
 
     function rating() {
         let rating = details.release_dates.results.filter(country => country.iso_3166_1 == 'US');
@@ -159,8 +188,8 @@ fetch(url, options)
 
     moreCast ()
     function moreCast (){
-
-        let castBtn = document.querySelector(".cast__btn")
+    
+            let castBtn = document.querySelector(".cast__btn")
             //console.log(castBtn);
             let moreCastElms = document.querySelectorAll('.cast__card:nth-child(n+5)')
             //console.log(moreCastElms);
@@ -174,7 +203,7 @@ fetch(url, options)
                         castElm.style.display =  "grid"
                         document.querySelector(".details__movie__cast").append(hideCastBtn)
                     })
-                }
+                } 
             })
 
             hideCastBtn.addEventListener("click", function(event){
@@ -226,19 +255,22 @@ fetch(url, options)
             //console.log(elm.release_dates);
             let certification = elm.release_dates
             //console.log(certification)
-            certification.forEach(elm => {
-             //console.log(elm.certification);
-            let movieCerti = elm.certification
+                certification.forEach(elm => {
+                //console.log(elm.certification);
+                let movieCerti = elm.certification
+                
+                    if (movieCerti != ""){
+                    console.log(movieCerti);
+                    }
             
-            if (movieCerti != ""){
-             console.log(movieCerti);
-            }
-         
-            })
+                })
      
             })
     }       
 
-    
+    playVideo ()
+    function playVideo (){
+       
+    }
 
    

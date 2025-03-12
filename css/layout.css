@@ -49,6 +49,9 @@
 .movie__container{
     width: min(38vw, 12rem);
 }
+.movie__container img{
+    min-height: 13.25rem;
+}
 
 .popular__movie__raiting{
     display: flex;
@@ -92,6 +95,11 @@ color: var(--grey-text-color);
     margin-bottom: 1rem;
 }
 
+.popular__movie__info{
+    flex: 1; 
+    min-width: 0;
+}
+
 .popular__movie__img__container{
    width: min(22.5vw, 9rem);
    margin-bottom: 1rem;
@@ -100,6 +108,7 @@ color: var(--grey-text-color);
 .popular__movie__genre{
     display: flex;
     gap: 0.25rem;
+    
 }
 .popular__genres{
     background-color: var(--light-color);
@@ -125,6 +134,7 @@ footer{
     padding: 1rem 2rem;
     text-align: center;
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
+    width: 100%;
 }
 
 .footer__icon__svg{

@@ -1,4 +1,7 @@
 @media screen and (width >= 60rem) {
+   .details__header__nav{
+    font-size: 2rem;
+   }
 
     .popular__movie__list{
         display: grid;
@@ -16,6 +19,10 @@
 
     .cast__list{
         gap: 2rem;
+    }
+
+    .trailer__container iframe{
+        min-height: 30rem;
     }
 
 }

@@ -1,3 +1,7 @@
+header a i{
+    text-shadow: 0 0 0.5rem hsl(0 0% 0% / 70%);
+}
+
 .details__body{
     position: relative;
     max-width:58rem ;
@@ -5,8 +9,13 @@
 
 }
 
+.hero img{
+    min-height: 10rem;
+}
+
 .movie__details__info>*,
-.movie__details__description__title{
+.movie__details__description__title,
+.video__title{
     margin-bottom: 1rem;
 }
 
@@ -45,6 +54,9 @@
    font-weight: bold;
 }
 
+iframe{
+    min-height: 13rem;
+}
 
 /* ---------------------------------------CAST---------------------------- */
 .cast__list{

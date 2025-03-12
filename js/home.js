@@ -1,3 +1,4 @@
+let testlinks = JSON.parse(sessionStorage.getItem("pokemonList")) || []
 page = 1
 popPage = 1
 
@@ -20,10 +21,10 @@ fetch(urlMovies, options)
         movieList.innerHTML += 
         
         data.results.map(movie => `
-         <a href='details.html?id=${movie.id}'>
+         <a class="movie__link" href='details.html?id=${movie.id}'>
          <section class="movie__card">
              <figure class="movie__container">
-             <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
+             <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt='poster of the movie ${movie.original_title}'>
              </figure>
 
              <section>
@@ -45,9 +46,12 @@ fetch(urlMovies, options)
                 
          })// end of fetch data
        
-        
-}     
-        
+         
+       
+}    
+    
+
+
 
 /* ----------------------------popular movies start here---------------------------------------------- */
 

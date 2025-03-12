@@ -14,19 +14,19 @@ header.innerHTML = `
                 <span class="slider round"></span>
 </nav>
 `
-// let headerSwitch = header.querySelector(".switch__elm")
-// console.log(headerSwitch);
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector("[data-dark='true']");
+    const checkbox = document.querySelector("#switch__elm");
 
-// let isDarkMode = document.documentElement.getAttribute("data-dark") === "true";
-// if (isDarkMode) {
-//     console.log("Dark mode is enabled!");
-//    headerSwitch.checked
-//    console.log( headerSwitch.checked);
-   
-// }
+    if (container && checkbox) {
+        checkbox.checked = true; // Check the box when data-dark="true"
+        console.log(checkbox)
+        console.log(container)
+    }
+});
 
 
-/* --------------------------main------------------------ */
+/* --------------------------------main-------------------------------- */
 let main = document.createElement("main")
 
 let movieList = document.createElement("article")
@@ -51,7 +51,7 @@ popularMovies.innerHTML = `
 main.append(movieList, popularMovies)
 
 
-/* ---------------------footer---------------------------- */
+/* -----------------------------------footer--------------------------------------- */
 
 let footer = document.createElement("footer")
 footer.innerHTML = `
@@ -64,6 +64,7 @@ footer.innerHTML = `
 rootElement.append(header, main, footer)
 
 
+/* ------------------------------------DARK MODE SVG--------------------------------------------- */
 
     let switchElm = header.querySelector(".switch__elm")
     //console.log(switchElm);
@@ -84,10 +85,10 @@ rootElement.append(header, main, footer)
     function svgDarkMode(){         
         switchElm.addEventListener("change", function(){
             if (!switchElm.checked || switchElm == undefined) {
-                console.log("also light-mode");
+                //console.log("also light-mode");
                 movieIcon.src = "http://127.0.0.1:5501/img/movie-icon.svg"
             } else{
-                console.log("also dark-mode");
+                //console.log("also dark-mode");
                 movieIcon.src = movieIcon.dataset.dark
             }
             
