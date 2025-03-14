@@ -1,4 +1,4 @@
-let testlinks = JSON.parse(sessionStorage.getItem("pokemonList")) || []
+
 page = 1
 popPage = 1
 
@@ -17,14 +17,17 @@ fetch(urlMovies, options)
   .then(data => {
     //console.log(data);
 
+        const MyMovies = data.results.filter(movie => movie.original_language == "en" && movie.poster_path !== null)
+        //console.log(MyMovies);
+       
         let movieList = document.querySelector(".movie__list")
         movieList.innerHTML += 
         
-        data.results.map(movie => `
-         <a class="movie__link" href='details.html?id=${movie.id}'>
+        MyMovies.map(movie => `
+         <a  id="m${movie.id}" class="movie__link" href='details.html?id=${movie.id}'>
          <section class="movie__card">
              <figure class="movie__container">
-             <img class="movie__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt='poster of the movie ${movie.original_title}'>
+             <img class="movie__img img__onerror" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt='poster of the movie ${movie.original_title}'>
              </figure>
 
              <section>
@@ -38,14 +41,15 @@ fetch(urlMovies, options)
          </section>
          </a>
              `).join("")
-    
-               
+        
+        
          var sentinel = document.querySelector(".movie__list a:nth-last-child(3)")
          //console.log(sentinel); 
          observer.observe(sentinel)  
-                
+        
+
+
          })// end of fetch data
-       
          
        
 }    
@@ -70,6 +74,7 @@ function loadMorePopMovies(popPage){
         fetch(urlPopular, optionsPopular)
         .then(res => res.json())
         .then(popular =>{
+            
 
             let movieGenres = {
                 28: "Action",
@@ -92,14 +97,17 @@ function loadMorePopMovies(popPage){
                 10752: "War",
                 37: "Western"
              } 
-
+        
+        const MyMovies = popular.results.filter(movie => movie.original_language == "en" && movie.poster_path !== null)
+        //console.log(MyMovies);
+        
         let poluparMoviesList = document.querySelector((".popular__movie__list"))
         poluparMoviesList.innerHTML += 
-        popular.results.map(popularMovie => `
-        <a class="pupular__movie__title" href='details.html?id=${popularMovie.id}'>
+        MyMovies.map(popularMovie => `
+        <a id='p${popularMovie.id}'  class="movie__link" href='details.html?id=${popularMovie.id}'>
             <section class="popular__movie__container">
                 <figure class="popular__movie__img__container">
-                    <img src="https://image.tmdb.org/t/p/w500${popularMovie.poster_path}" alt="image of the movie ${popularMovie.original_title}">
+                    <img class="popular__movie__img img__onerror" src="https://image.tmdb.org/t/p/w500${popularMovie.poster_path}" alt="image of the movie ${popularMovie.original_title}">
                 </figure>
 
                 <section class="popular__movie__info">
@@ -118,11 +126,11 @@ function loadMorePopMovies(popPage){
        </a>
        `).join("")
 
+
        var popSentinel = document.querySelector(".popular__movie__list a:nth-last-child(3)")
        //console.log(popSentinel);
        observer.observe(popSentinel)
-       
-      
+
     }) //end of popular fetch !!
 
 
@@ -139,10 +147,25 @@ const observer = new IntersectionObserver(function(entires){
                 loadMoreMovies(page)
                 loadMorePopMovies(popPage)
                 observer.unobserve(entry.target)
+
             }
         }
     })
 })
+
+
+
+// function showSavedMovies (){
+    
+//     let savedIcon = document.querySelector(".saved__list");
+//     let movieList = document.querySelector(".my__mov__list");
+
+//     savedIcon.addEventListener("click", function () {
+//         // Toggle the visibility class
+//         movieList.classList.toggle("not-visible");
+//     });
+    
+// }
 
 
 loadMoreMovies(page)

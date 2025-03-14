@@ -3,6 +3,11 @@
     font-size: 2rem;
    }
 
+   .movie__container{
+    min-width: 18rem;
+    min-height: 28rem;
+   }
+
     .popular__movie__list{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -26,6 +31,8 @@
     }
 
 }
+
+
 @media screen and (width >= 67rem) {
 
     .popular__movie__list{

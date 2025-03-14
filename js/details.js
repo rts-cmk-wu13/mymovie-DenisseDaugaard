@@ -1,3 +1,7 @@
+
+let favorites = readFromLocalStorage("favoriteMovies") || []
+//console.log(favorites);
+
 let detailsBody= document.documentElement.querySelector("body")
 //console.log(detailsBody);
 detailsBody.classList.add("details__body")
@@ -5,7 +9,7 @@ detailsBody.classList.add("details__body")
 let detailsHeader = detailsBody.querySelector("header")
 detailsHeader.innerHTML = `
     <nav class="details__header__nav">
-     <a href="index.html"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
+     <a class="back-button" href="index.html"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
      <div class="ckeck-box__container">
          <label class="switch">
          <input type="checkbox" class ="switch__elm" id="switch__elm">
@@ -14,8 +18,6 @@ detailsHeader.innerHTML = `
      </div>
    </nav>
 `
-
-let favorites = readFromLocalStorage("favoriteMovies") || []
 
 let params = new URLSearchParams(window.location.search)
 //console.log(params);
@@ -36,18 +38,26 @@ fetch(url, options)
   .then(details =>{
     console.log(details);
 
+    // let anchorId = details.id
+    // console.log(anchorId);
+    // let backButton = document.querySelector(".back-button");
+    // backButton.setAttribute("href", `index.html#p${anchorId}`);
+    
   
     let movieDetails = document.createElement("article")
     movieDetails.classList.add("movie__details")
     movieDetails.innerHTML = `
     <section class="hero">
-        <img class="hero__img" src="https://image.tmdb.org/t/p/original/${details.backdrop_path}" alt="Backdrop of the movie ${details.original_title}">
+        <img class="hero__img img__onerror" 
+        src="https://image.tmdb.org/t/p/original/${details.backdrop_path}" 
+        alt="Backdrop of the movie ${details.original_title}" 
+        onerror="this.onerror=null; this.src='img/hero__fallback__img.png';">
     </section>
     <section class="movie__details__info">
         
             <header class="movie__details__header">
                 <h1 class="details__movie__title">${details.original_title}</h1>
-                <i class="fa-regular fa-bookmark save" data-name="${details.original_title}"></i>
+                <i class="fa-regular fa-bookmark save" data-name="${details.title}" data-id="${details.id}"></i>
             </header>
     
             <div class="popular__movie__raiting">
@@ -94,38 +104,51 @@ fetch(url, options)
                 ${details.credits.cast.map(castElm => `
                 <section class="cast__card">
                     <figure class="cast__img__container">
-                    <img class="cast__list__img" src="https://image.tmdb.org/t/p/w500${castElm.profile_path}" srcset="https://image.tmdb.org/t/p/w500${castElm.profile_path} 100w" alt="picture of ${castElm.name}">
+                    <img class="cast__list__img" src="https://image.tmdb.org/t/p/w500${castElm.profile_path}" 
+                    srcset="https://image.tmdb.org/t/p/w500${castElm.profile_path} 100w" 
+                    alt="picture of ${castElm.name}">
                     </figure>
                     <figcaption>${castElm.name}</figcaption>
                 </section>
                 `).join("")}
             </div>
         </section> 
-    </section>
-    `
-    function videoTrailer(){
+    </section>`
+    
 
-        const videos = details.videos.results;
-        console.log(videos);
+    function videoTrailer() {
+
+        const videos = details.videos?.results || []; 
+        //details.videos?.results
+        //This tries to access details.videos.results safely.
+        //If details.videos exists, it gets results.
+        //If details.videos is undefined or null, it does NOT TROW AN ERROR— it just returns undefined.
+        
         if (videos.length > 0) {
-                //Find the first official trailer (YouTube is common)
-                const trailer = videos.find(video => video.type === "Trailer" && video.site === "YouTube" && video.name == "Official Trailer");
-                console.log(trailer);
-                
-               return  `<h1 class="video__title">${trailer.name}</h1>
-                         <iframe
-                             src="https://www.youtube.com/embed/${trailer.key}" 
-                             frameborder="0" allowfullscreen>
-                        </iframe>`
-        }  else {
-            return `<div class="video__error">
-                    <h2 class="video__title">Trailer not Available</h2>
-                    <img src="img/video_placeholder.png" alt="placeholder image for the misssing trailer" >
-                    </div>
-                `
-
+                const trailer = videos.find(video => 
+                video.site === "YouTube" && 
+                video.type === "Trailer" && 
+                video.name.includes("Official Trailer") || 
+                video.name.includes("TRAILER")
+            );
+    
+            if (trailer) {
+                return `<h1 class="video__title">${trailer.name}</h1>
+                        <iframe 
+                            src="https://www.youtube.com/embed/${trailer.key}" 
+                            frameborder="0">
+                        </iframe>`;
+            }
         }
+        
+        // Return placeholder if no trailer found, not to write inside else{}
+        // because then it only returns undefined!!!
+        return `<div class="video__error">
+                    <h2 class="video__title">Trailer not Available</h2>
+                    <img src="img/video_placeholder.png" alt="placeholder image for the missing trailer">
+                </div>`;
     }
+    
 
     
 
@@ -135,6 +158,8 @@ fetch(url, options)
         return `${hours}h ${remainingMinutes}min`;
     }
 
+    
+
     function rating() {
         let rating = details.release_dates.results.filter(country => country.iso_3166_1 == 'US');
     
@@ -142,94 +167,101 @@ fetch(url, options)
             elm.release_dates
                 .map(certifiElm => certifiElm.certification.trim()) // Get certification values
                 .filter(certi => certi !== "") // Remove empty values
-        );
+        )
     
         return certifications.length > 0 ? certifications[0] : "NA"; 
         //this is a ternary operator (a shorthand for an if-else statement)
     }
 
     detailsBody.querySelector("main").append(movieDetails)
-
-
-
+   
+    
     let currenIcon = document.querySelector(".fa-bookmark")
     //console.log(currenIcon);
     if(favorites.includes(currenIcon.dataset.name)){
         currenIcon.classList.add("fa-solid")
         currenIcon.classList.add("saved")
+        currenIcon.classList.add("bounce-animation")
     }
-
-    let saveIcon = document.querySelector(".save")
-    saveMovies()
+   
+   
+   
     function saveMovies(){
+        let saveIcon = document.querySelector(".save")
         //console.log(saveIcon);
         saveIcon.addEventListener("click", function(event){
-            let currendName = event.target.dataset.name
+            let currentName = event.target.dataset.name
 
-            console.log(currendName);
-            if(favorites.includes(currendName)) {
-                let newFavorites = favorites.filter(nameElm => nameElm != currendName)
+            console.log(currentName);
+            if(favorites.includes(currentName)) {
+                let newFavorites = favorites.filter(nameElm => nameElm != currentName)
                 event.target.classList.remove("saved")
                 favorites = newFavorites
                 event.target.classList.remove("fa-solid")
+                event.target.classList.remove("fa-bounce")
                 //console.log(favorites);
                } else{ 
-               favorites.push(currendName)
+               favorites.push(currentName)
                event.target.classList.add("saved")
                event.target.classList.add("fa-solid")
-
-               console.log(favorites);
+               
+               //console.log(favorites);
               }
    
               saveToLocalStorage("favoriteMovies", favorites)
             
         })
-   }
-
-    moreCast ()
-    function moreCast (){
+   
+ }
+    function moreCast() {
+        let castBtn = document.querySelector(".cast__btn");
+        let moreCastElms = document.querySelectorAll('.cast__card:nth-child(n+5)');
+        
+        // If there are no moreCastElms, remove the castBtn immediately
+        if (moreCastElms.length === 0) {
+            castBtn.remove();
+            return;  // Exit the function early
+        }
     
-            let castBtn = document.querySelector(".cast__btn")
-            //console.log(castBtn);
-            let moreCastElms = document.querySelectorAll('.cast__card:nth-child(n+5)')
-            //console.log(moreCastElms);
-            let hideCastBtn = document.createElement("button")
-            hideCastBtn.classList.add("see__more__btn", "show__less__btn")
-            hideCastBtn.textContent = "Show less"
-            castBtn.addEventListener("click", function(event){
-                if(event.target){
-                    castBtn.classList.add("cast__btn--hidden")
-                    moreCastElms.forEach(castElm =>{
-                        castElm.style.display =  "grid"
-                        document.querySelector(".details__movie__cast").append(hideCastBtn)
-                    })
-                } 
-            })
-
-            hideCastBtn.addEventListener("click", function(event){
-                if(event.target){
-                    moreCastElms.forEach(castElm =>{
-                        castElm.style.display =  "none"
-                        castBtn.classList.remove("cast__btn--hidden")
-                        hideCastBtn.remove()
-                    })
-                }
-            })
-
-            
-            document.querySelectorAll(".cast__list__img").forEach(img => {
+        let hideCastBtn = document.createElement("button");
+        hideCastBtn.classList.add("see__more__btn", "show__less__btn");
+        hideCastBtn.textContent = "Show less";
+    
+        castBtn.addEventListener("click", function(event) {
+            if (event.target) {
+                castBtn.classList.toggle("cast__btn--hidden");
+                moreCastElms.forEach(castElm => {
+                    castElm.style.display = "grid";
+                });
+                document.querySelector(".details__movie__cast").append(hideCastBtn);
+            }
+        });
+    
+        hideCastBtn.addEventListener("click", function(event) {
+            if (event.target) {
+                moreCastElms.forEach(castElm => {
+                    castElm.style.display = "none";
+                });
+                castBtn.classList.toggle("cast__btn--hidden");
+                hideCastBtn.remove();
+            }
+        });
+    
+        document.querySelectorAll(".cast__list__img").forEach(img => {
             img.onerror = function () {
-                this.onerror = null;  // Prevent looping
+                this.onerror = null; // Prevent looping
                 this.src = "img/placeholder.png"; // Set your placeholder image
-                this.classList.add("cast__placeholder__img")
-                this.srcset ="img/placeholder.png 88w"
+                this.classList.add("cast__placeholder__img");
+                this.srcset = "img/placeholder.png 88w";
             };
-        })
-
-    } 
+        });
+    }
     
+    
+  
+    moreCast ()
+    saveMovies()
 }).catch(err => console.error(err));// end of details fetch
-
 
 
         function saveToLocalStorage (key, value){
@@ -248,29 +280,4 @@ fetch(url, options)
         }
 
 
-   
-
-    function save (){
-        rating.forEach(elm =>{
-            //console.log(elm.release_dates);
-            let certification = elm.release_dates
-            //console.log(certification)
-                certification.forEach(elm => {
-                //console.log(elm.certification);
-                let movieCerti = elm.certification
-                
-                    if (movieCerti != ""){
-                    console.log(movieCerti);
-                    }
-            
-                })
-     
-            })
-    }       
-
-    playVideo ()
-    function playVideo (){
-       
-    }
-
-   
+      

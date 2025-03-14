@@ -14,17 +14,6 @@ header.innerHTML = `
                 <span class="slider round"></span>
 </nav>
 `
-document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector("[data-dark='true']");
-    const checkbox = document.querySelector("#switch__elm");
-
-    if (container && checkbox) {
-        checkbox.checked = true; // Check the box when data-dark="true"
-        console.log(checkbox)
-        console.log(container)
-    }
-});
-
 
 /* --------------------------------main-------------------------------- */
 let main = document.createElement("main")
@@ -48,6 +37,7 @@ popularMovies.innerHTML = `
      </header>
      <div class="popular__movie__list"></div>
 `
+
 main.append(movieList, popularMovies)
 
 
@@ -58,7 +48,7 @@ footer.innerHTML = `
  <div class="footer__nav">
             <img class="footer__icon movie__icon" src="img/movie-icon.svg" alt="icon" data-dark = "http://127.0.0.1:5501/img/movie-icon-dark.svg">
             <img class="footer__icon__svg" src="img/ticket-icon.svg" alt="ticket -icon">
-            <img class="footer__icon__svg" src="img/save-icon.svg" alt="save-icon">
+            <img class="footer__icon__svg saved__list" src="img/save-icon.svg" alt="save-icon">
         </div>
 ` 
 rootElement.append(header, main, footer)
@@ -95,5 +85,5 @@ rootElement.append(header, main, footer)
         })
 
     }
-    
 
+   

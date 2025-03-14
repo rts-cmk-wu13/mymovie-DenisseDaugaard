@@ -87,3 +87,18 @@ iframe{
    color: rgb(225, 35, 60);
 }
 
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Adjust the bounce height as needed */
+    }
+  }
+  
+  .bounce-animation {
+    animation: bounce 600ms ease infinite; /* Bounce animation with 1 second duration */
+    animation-iteration-count: 2; /* Repeat the animation 3 times */
+  }
+  
+
