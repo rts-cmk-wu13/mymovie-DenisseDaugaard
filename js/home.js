@@ -24,7 +24,7 @@ fetch(urlMovies, options)
         movieList.innerHTML += 
         
         MyMovies.map(movie => `
-         <a  id="m${movie.id}" class="movie__link" href='details.html?id=${movie.id}'>
+         <a  id="mov${movie.id}" class="movie__link" href='details.html?id=${movie.id}'>
          <section class="movie__card">
              <figure class="movie__container">
              <img class="movie__img img__onerror" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt='poster of the movie ${movie.original_title}'>
@@ -104,7 +104,7 @@ function loadMorePopMovies(popPage){
         let poluparMoviesList = document.querySelector((".popular__movie__list"))
         poluparMoviesList.innerHTML += 
         MyMovies.map(popularMovie => `
-        <a id='p${popularMovie.id}'  class="movie__link" href='details.html?id=${popularMovie.id}'>
+        <a  class="popmovie__link" href='details.html?id=${popularMovie.id}'>
             <section class="popular__movie__container">
                 <figure class="popular__movie__img__container">
                     <img class="popular__movie__img img__onerror" src="https://image.tmdb.org/t/p/w500${popularMovie.poster_path}" alt="image of the movie ${popularMovie.original_title}">
@@ -131,6 +131,7 @@ function loadMorePopMovies(popPage){
        //console.log(popSentinel);
        observer.observe(popSentinel)
 
+       scrollBack ()
     }) //end of popular fetch !!
 
 
@@ -155,17 +156,30 @@ const observer = new IntersectionObserver(function(entires){
 
 
 
-// function showSavedMovies (){
+function scrollBack (){
+    console.log(document.querySelectorAll(".popmovie__link"));
     
-//     let savedIcon = document.querySelector(".saved__list");
-//     let movieList = document.querySelector(".my__mov__list");
+    document.querySelectorAll(".popular__movie__list a").forEach(link => {
+        link.addEventListener("click", () => {
+            sessionStorage.setItem("scrollPosition", window.scrollY); 
+        })
+    })
 
-//     savedIcon.addEventListener("click", function () {
-//         // Toggle the visibility class
-//         movieList.classList.toggle("not-visible");
-//     });
+    document.addEventListener("DOMContentLoaded", () => {
+        let scrollPosition = sessionStorage.getItem("restoreScroll"); 
+        if (scrollPosition !== null) {
+            setTimeout(() => {
+                window.scrollTo(0, parseInt(scrollPosition)); 
+            }, 100); // Increased delay to ensure all content is loaded
+            sessionStorage.removeItem("restoreScroll"); // Clean up after restoration
+        }
+    });
     
-// }
+    
+}
+
+
+
 
 
 loadMoreMovies(page)

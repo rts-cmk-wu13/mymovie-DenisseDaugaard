@@ -9,7 +9,7 @@ detailsBody.classList.add("details__body")
 let detailsHeader = detailsBody.querySelector("header")
 detailsHeader.innerHTML = `
     <nav class="details__header__nav">
-     <a class="back-button" href="index.html"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
+     <a class="back-button"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
      <div class="ckeck-box__container">
          <label class="switch">
          <input type="checkbox" class ="switch__elm" id="switch__elm">
@@ -18,6 +18,7 @@ detailsHeader.innerHTML = `
      </div>
    </nav>
 `
+
 
 let params = new URLSearchParams(window.location.search)
 //console.log(params);
@@ -36,12 +37,16 @@ const options = {
 fetch(url, options)
   .then(res => res.json())
   .then(details =>{
-    console.log(details);
+    // console.log(details);
 
-    // let anchorId = details.id
-    // console.log(anchorId);
-    // let backButton = document.querySelector(".back-button");
-    // backButton.setAttribute("href", `index.html#p${anchorId}`);
+    
+    document.querySelector(".back-button").addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        //sessionStorage.setItem("restoreScroll", window.scrollY); // Save scroll position
+        window.location.href = "index.html"; // Navigate back
+        console.log(window.location);
+        
+    })
     
   
     let movieDetails = document.createElement("article")
@@ -150,7 +155,6 @@ fetch(url, options)
     }
     
 
-    
 
     function formatMinutes(minutes) {
         let hours = Math.floor(minutes / 60);
@@ -274,10 +278,3 @@ fetch(url, options)
             return JSON.parse(localStorage.getItem(key))
         }
     
-        function deleteFromLocalStorage (key){
-            localStorage.removeItem(key)
-           return "the element" + key + "was deleted."
-        }
-
-
-      
