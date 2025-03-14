@@ -9,7 +9,7 @@ detailsBody.classList.add("details__body")
 let detailsHeader = detailsBody.querySelector("header")
 detailsHeader.innerHTML = `
     <nav class="details__header__nav">
-     <a class="back-button"><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
+     <a class="back-button" href="index.html" ><i class="fa-solid fa-arrow-left" style="color: #FFFF;"></i></a>
      <div class="ckeck-box__container">
          <label class="switch">
          <input type="checkbox" class ="switch__elm" id="switch__elm">
