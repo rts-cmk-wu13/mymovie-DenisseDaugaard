@@ -22,24 +22,28 @@
     --main-bg-color:white;
     --grey-text-color:#9C9C9C;
 
-    --genres-font-size:clamp(0.5rem, 2vw, 1rem);
-    --see-more-btn-font-size: clamp(0.625rem, 2.5vw, 1.5rem); 
-    --p-small-font-size: clamp(0.75rem, 2.5vw, 1.75rem); 
-    --grey-text-font-size:clamp(0.825rem,2vw, 1.5rem);
-    --movie-title-font-size: clamp(0.95rem, 3.5vw, 2rem); 
-    --primary-h1-font-size:clamp(1rem, 3.5vw, 2rem);
-    --largeH1-font-size: clamp(1.25rem, 3.5vw, 2.5rem); 
+    --genres-font-size:clamp(0.5rem, 2vw, 0.75rem);
+    --see-more-btn-font-size: clamp(0.625rem, 2.5vw, 1.25rem); 
+    --p-small-font-size: clamp(0.75rem, 2.5vw, 1.35rem); 
+    --grey-text-font-size:clamp(0.825rem,2vw, 1.48rem);
+    --movie-title-font-size: clamp(0.95rem, 3.5vw, 1.55rem); 
+    --primary-h1-font-size:clamp(1rem, 2.5vw, 2rem);
+    --largeH1-font-size: clamp(1.25rem, 2.5vw, 2.25rem); 
+
 }
+
 
 h1{
     font-family:"Merriweather";
     font-size: var(--primary-h1-font-size);
 }
 
-a{
+h2{
     font-size: var(--movie-title-font-size);
+}
+
+a{
     text-decoration: none;
-    font-weight: bold;
 }
 
 .see__more__btn{
@@ -55,7 +59,7 @@ a{
     font-size: (var(--p-small-font-size));
 }
 
-.movie__genres{
+.popular__genres{
     font-size: var(--genres-font-size);
 }
 
@@ -64,11 +68,11 @@ a{
     font-size: var(--grey-text-font-size);
 }
 
-
-
-a:hover{
-    color: rgb(216, 26, 26);
+.details__movie__title,
+.save{
+    font-size: var(--largeH1-font-size);
 }
+
 
 
 button:hover,
@@ -77,11 +81,13 @@ a:hover,
 cursor: pointer;
 }
 
-img{
+img,
+iframe{
     width: 100%;
     height: 100%;
     object-fit:cover;
 }
+
 
 html {
     scrollbar-width: none;

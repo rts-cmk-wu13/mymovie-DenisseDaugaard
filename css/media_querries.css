@@ -1,0 +1,43 @@
+@media screen and (width >= 60rem) {
+   .details__header__nav{
+    font-size: 2rem;
+   }
+
+   .movie__container{
+    min-width: 18rem;
+    min-height: 28rem;
+   }
+
+    .popular__movie__list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .popular__header{
+        grid-column: 1 /-1;
+    }
+
+    .show__less__btn {
+        margin-top: 2rem;
+        margin-left: 85%;
+    }
+
+    .cast__list{
+        gap: 2rem;
+    }
+
+    .trailer__container iframe{
+        min-height: 30rem;
+    }
+
+}
+
+
+@media screen and (width >= 67rem) {
+
+    .popular__movie__list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}

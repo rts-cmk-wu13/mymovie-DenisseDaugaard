@@ -13,13 +13,13 @@
 
 .movies__container__header{
     padding: 1rem 1rem 1rem 0;
+    width: 100%;
 }
-.movies__container,
-.popular__movies{
-  padding: 2rem 0 0 2rem;
+.movies__container{
+  padding: 1rem 0 0 2rem;
 }
 
-.movies__list{
+.movie__list{
     display: flex;
     gap: 1rem;
     overflow-x: scroll;
@@ -46,10 +46,11 @@
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
 }
 .movie__container{
-  min-width:9rem;
+   height: min(28.4vh, 25rem);
+   min-width: 8rem;
 }
 
-.movie_popularity_container{
+.popular__movie__raiting{
     display: flex;
     gap: 0.5rem;
 }
@@ -60,11 +61,22 @@ padding: 4px 8px;
 border: 1px solid #AAA9B1;
 border-radius: 100px;
 color: var(--grey-text-color);
+margin-right: 0.75rem;
 }
+
+
+/* .movie__list a:nth-last-child(3){
+    background-color: orange;
+}  */
+
 
 /*    -------------------------------POPULAR SECTION------------------------------ */
 
-.popular__movies__container,
+.popular__movies{
+    padding: 0 0 0 2rem;
+}
+
+.popular__movie__container,
 .popular__movie__raiting,
 .popular__movie__duration {
     display: flex;
@@ -80,23 +92,31 @@ color: var(--grey-text-color);
 }
 
 
-.popular__movies__list>*,
-.popular__movie__info>*{
-    margin-bottom: 0.5rem;
+.popular__movie__list>*,
+.popular__movie__info>*,
+.pupular__movie__title{
+    margin-bottom: 1rem;
+}
+
+.popular__movie__info{
+    flex: 1; 
+    min-width: 0;
 }
 
 .popular__movie__img__container{
-   width: 5.5rem;
-   min-width: 5.5rem;
-   max-width: 10rem;
+   width: min(22.5vw, 13rem);
    margin-bottom: 1rem;
 }
 
 .popular__movie__genre{
     display: flex;
     gap: 0.25rem;
+    flex-wrap: wrap; 
+    max-width: 100%; 
+    overflow: hidden; 
+    
 }
-.movie__genres{
+.popular__genres{
     background-color: var(--light-color);
     color: var(--btn-font-color);
     border: none;
@@ -107,6 +127,10 @@ color: var(--grey-text-color);
     font-weight: bold;
 }
 
+/* .popular__movie__container:nth-last-child(3){
+    background-color: blueviolet;
+} */
+
 
 /* ----------------------------------FOOTER--------------------------- */
 
@@ -116,6 +140,7 @@ footer{
     padding: 1rem 2rem;
     text-align: center;
     box-shadow: 0 0 .25rem hsla(0, 0%, 52%, 0.7);
+    width: 100%;
 }
 
 .footer__icon__svg{
@@ -128,3 +153,23 @@ footer{
     height: 2.5rem;
     width: 2.5rem;
  }
+
+
+ .my__mov__list{
+    z-index: 2;
+    position:sticky;
+    width: 50%;
+    padding: 1.5rem;
+    bottom: 11%;
+    right: 0;
+    border: 1px solid red;
+ }
+
+ .my__mov__list ul{
+    max-width: container;
+ }
+
+ 
+.not-visible{
+    display: none;
+}

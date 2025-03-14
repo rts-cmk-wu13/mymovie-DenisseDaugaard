@@ -2,7 +2,8 @@
 html,
 footer,
 .movie__details__info,
-.see__more__btn{
+.see__more__btn,
+.my__mov__list{
     color: light-dark(var(--dark-color), var(--main-bg-color));
     background-color: light-dark(var(--main-bg-color), var(--dark-color));
     font-family: "Mulish",Arial, Helvetica, sans-serif;

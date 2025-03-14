@@ -1,7 +1,7 @@
 function darkMode (){
     let rootElm = document.documentElement
     let switchElm = rootElm.querySelector("#switch__elm")
-    console.log(rootElm);
+    //console.log(rootElm);
     //console.log(switchElm);
     let IsDarkMode = readFromLocalStorage("isDarkMode")
     let browserDark = window.matchMedia("(prefers-color-scheme:dark)").matches

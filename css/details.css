@@ -1,3 +1,7 @@
+header a i{
+    text-shadow: 0 0 0.5rem hsl(0 0% 0% / 70%);
+}
+
 .details__body{
     position: relative;
     max-width:58rem ;
@@ -5,9 +9,13 @@
 
 }
 
+.hero img{
+    min-height: 10rem;
+}
+
 .movie__details__info>*,
 .movie__details__description__title,
-.cast__list figure{
+.video__title{
     margin-bottom: 1rem;
 }
 
@@ -19,7 +27,6 @@
     top: 89.35%;
     width: 100%;
 }
-
 
 .details__header__nav{
     position: absolute;
@@ -47,6 +54,9 @@
    font-weight: bold;
 }
 
+iframe{
+    min-height: 13rem;
+}
 
 /* ---------------------------------------CAST---------------------------- */
 .cast__list{
@@ -55,21 +65,20 @@
     gap: 0.5rem;
 }
 
-.cast__img__container:nth-child(n+5){
+.cast__card:nth-child(n+5){
    display: none;
 }
 
 .cast__img__container{
-    height: 5.5rem;
-    margin-top: 1rem;
+    height: min(23.5vw, 12rem);
 }
- 
+
 .cast__btn--hidden{
     display: none;
 }
 
 .show__less__btn {
-    margin-top: 2rem;
+    margin-block: 0.5rem;
     margin-left: 75%;
 }
 
@@ -77,3 +86,19 @@
 .saved{
    color: rgb(225, 35, 60);
 }
+
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px); /* Adjust the bounce height as needed */
+    }
+  }
+  
+  .bounce-animation {
+    animation: bounce 600ms ease infinite; /* Bounce animation with 1 second duration */
+    animation-iteration-count: 2; /* Repeat the animation 3 times */
+  }
+  
+
