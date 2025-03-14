@@ -40,13 +40,12 @@ fetch(url, options)
     // console.log(details);
 
     
-    document.querySelector(".back-button").addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        //sessionStorage.setItem("restoreScroll", window.scrollY); // Save scroll position
-        window.location.href = "index.html"; // Navigate back
-        console.log(window.location);
-        
-    })
+    // document.querySelector(".back-button").addEventListener("click", (event) => {
+    //     event.preventDefault(); // Prevent default link behavior
+    //     //sessionStorage.setItem("restoreScroll", window.scrollY); // Save scroll position
+    //     window.location.href = "index.html"; // Navigate back
+    //     console.log(window.location);   
+    // })
     
   
     let movieDetails = document.createElement("article")

@@ -130,8 +130,6 @@ function loadMorePopMovies(popPage){
        var popSentinel = document.querySelector(".popular__movie__list a:nth-last-child(3)")
        //console.log(popSentinel);
        observer.observe(popSentinel)
-
-       scrollBack ()
     }) //end of popular fetch !!
 
 
@@ -156,27 +154,25 @@ const observer = new IntersectionObserver(function(entires){
 
 
 
-function scrollBack (){
-    console.log(document.querySelectorAll(".popmovie__link"));
+// function scrollBack (){
+//     console.log(document.querySelectorAll(".popmovie__link"));
     
-    document.querySelectorAll(".popular__movie__list a").forEach(link => {
-        link.addEventListener("click", () => {
-            sessionStorage.setItem("scrollPosition", window.scrollY); 
-        })
-    })
+//     document.querySelectorAll(".popular__movie__list a").forEach(link => {
+//         link.addEventListener("click", () => {
+//             sessionStorage.setItem("scrollPosition", window.scrollY); 
+//         })
+//     })
 
-    document.addEventListener("DOMContentLoaded", () => {
-        let scrollPosition = sessionStorage.getItem("restoreScroll"); 
-        if (scrollPosition !== null) {
-            setTimeout(() => {
-                window.scrollTo(0, parseInt(scrollPosition)); 
-            }, 100); // Increased delay to ensure all content is loaded
-            sessionStorage.removeItem("restoreScroll"); // Clean up after restoration
-        }
-    });
-    
-    
-}
+//     document.addEventListener("DOMContentLoaded", () => {
+//         let scrollPosition = sessionStorage.getItem("restoreScroll"); 
+//         if (scrollPosition !== null) {
+//             setTimeout(() => {
+//                 window.scrollTo(0, parseInt(scrollPosition)); 
+//             }, 100); // Increased delay to ensure all content is loaded
+//             sessionStorage.removeItem("restoreScroll"); // Clean up after restoration
+//         }
+//     });
+// }
 
 
 

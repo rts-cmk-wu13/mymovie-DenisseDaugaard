@@ -23,7 +23,7 @@ movieList.classList.add("movies__container")
 movieList.innerHTML = `
 <header class="movies__container__header">
             <h1>Now Showing</h1>
-            <button class="see__more__btn dark-mode-btn">See more</button>
+            <!-- <button class="see__more__btn dark-mode-btn">See more</button> -->
 </header>
 <div class="movie__list"></div>
 `
@@ -33,7 +33,7 @@ popularMovies.classList.add("popular__movies")
 popularMovies.innerHTML = `
   <header class="movies__container__header popular__header">
          <h1>Popular</h1>
-         <button class="see__more__btn dark-mode-btn load__pop__btn">See more</button>
+         <!-- <button class="see__more__btn dark-mode-btn load__pop__btn">See more</button> -->
      </header>
      <div class="popular__movie__list"></div>
 `
